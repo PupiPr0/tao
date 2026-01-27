@@ -1,0 +1,585 @@
+<html lang="en" x-data="" :class="$store.darkMode.on && 'dark'" class="sf-js-enabled dark"><head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Join our unique gaming server complex Lineage 2 Gracia Final & Interlude. Enjoy auto-registration, classic builds, and community support. Play without donations!">
+<meta name="keywords" content="Lineage 2, Gracia Final, Interlude, gaming servers, donation-free, classic builds, auto-registration, gaming community"><meta property="og:title" content="Lineage 2 Interlude & Gracia Final - Donation-Free Gaming Servers">
+<meta property="og:description" content="Join our unique gaming server complex Lineage 2 Gracia Final & Interlude. Enjoy auto-registration, classic builds, and community support. Play without donations!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="theanion.online">
+<meta property="og:site_name" content="Lineage2">
+<meta property="og:image" content="images/imgloogoogoo.png">
+<meta property="og:image:alt" content="">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:image" content="images/imgloogoogoo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="dark">
+    <title>Lineage 2 Interlude & Gracia Final - Donation-Free Gaming Servers</title>
+
+  
+
+
+
+<style>
+/* Плавающая кнопка */
+.gift-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: rgba(20, 24, 40, 0.95);
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(244, 216, 140, 0.4);
+  z-index: 9999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 229, 153, 0.6);
+}
+
+/* Подпрыгивание иконки */
+.gift-button img {
+  animation: jumpGift 2.4s infinite ease-in-out;
+}
+
+@keyframes jumpGift {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+  60% { transform: translateY(2px); }
+}
+
+/* Мигание текста */
+.gift-button span {
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Book Antiqua', serif;
+  color: #f4d88c;
+  animation: glowText 2s ease-in-out infinite;
+}
+
+@keyframes glowText {
+  0%, 100% {
+    color: #f4d88c;
+    text-shadow: 0 0 2px rgba(255, 229, 153, 0.3);
+  }
+  50% {
+    color: #ffe9a8;
+    text-shadow: 0 0 6px rgba(255, 229, 153, 0.7);
+  }
+}
+</style>
+
+<style>
+.gift-center-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px auto;
+  padding: 20px 32px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: 'Book Antiqua', serif;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Прозрачная кнопка без контура в покое */
+  background: rgba(20, 24, 40, 0);
+  border: 2px solid rgba(244, 216, 140, 0);
+  box-shadow: 0 0 0 rgba(244, 216, 140, 0);
+  transition: all 0.4s ease;
+}
+
+/* При наведении — проявляется контур и свечение */
+.gift-center-button:hover {
+  background: rgba(20, 24, 40, 0.05);
+  border: 2px solid rgba(244, 216, 140, 0.5);
+  box-shadow: 0 0 20px rgba(244, 216, 140, 0.5),
+              0 0 30px rgba(244, 216, 140, 0.3) inset;
+}
+
+/* Гифка в 2 раза больше */
+.gift-center-button img {
+  width: 80px;  /* было 40px */
+  height: 80px;
+  animation: jumpGift 2.4s infinite ease-in-out;
+}
+
+/* Текст в 2 раза больше */
+.gift-center-button span {
+  font-weight: bold;
+  font-size: 32px; /* было 16px */
+  color: #f4d88c;
+  animation: glowText 2s ease-in-out infinite;
+}
+
+/* Подпрыгивание иконки */
+@keyframes jumpGift {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  60% { transform: translateY(3px); }
+}
+
+/* Мягкое свечение текста */
+@keyframes glowText {
+  0%, 100% {
+    color: #f4d88c;
+    text-shadow: 0 0 4px rgba(255, 229, 153, 0.2);
+  }
+  50% {
+    color: #ffe9a8;
+    text-shadow: 0 0 12px rgba(255, 229, 153, 0.6);
+  }
+}
+</style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Создаем кнопку
+  const giftButton = document.createElement('div');
+  giftButton.className = 'gift-center-button';
+  giftButton.innerHTML = `
+    <img src="https://res.dkon.app/img/other-im/gift1.png" alt="Gift" width="40" height="40">
+    <span>Free Bonus!</span>
+  `;
+
+  // Находим кнопку "НАЧАТЬ ИГРУ" и вставляем перед ней
+  const startButton = document.querySelector('.header__button, .header__btn, .header_button, .header-btn');
+  if (startButton && startButton.parentNode) {
+    startButton.parentNode.insertBefore(giftButton, startButton);
+  } else {
+    // Если не нашли — добавляем в конец body
+    document.body.appendChild(giftButton);
+  }
+
+  const giftImg = giftButton.querySelector('img');
+  const originalSrc = giftImg.src;
+
+  // Клик по кнопке — открываем бота
+  giftButton.addEventListener('click', () => {
+    window.open('https://dkon.app/La2WildMP?referrer=7609', '_blank');
+  });
+
+  // Смена картинки при наведении
+  giftButton.addEventListener("mouseenter", () => {
+    giftImg.src = "https://res.dkon.app/img/other-im/gift.png"; // открытый подарок
+  });
+  giftButton.addEventListener("mouseleave", () => {
+    giftImg.src = "https://res.dkon.app/img/other-im/gift1.png"; // закрытый подарок
+  });
+});
+</script>
+
+<style>
+/* === Всплывающее окно подарка === */
+.gift-popup {
+  position: absolute;
+  background: #0e1225; /* тёмный фон */
+  border-radius: 12px;
+  font-family: 'Book Antiqua', serif;
+  font-size: 18px; /* крупнее */
+  line-height: 1.5;
+  z-index: 10000;
+  width: 380px;
+  text-align: center;
+  display: none;
+  box-shadow: 0 0 20px rgba(244, 216, 140, 0.35);
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Контент */
+.gift-popup-content {
+  padding: 18px 20px 10px;
+  color: #f4d88c;
+  text-shadow: 0 0 8px rgba(255, 229, 153, 0.35); /* мягкое свечение текста */
+}
+
+.gift-popup-content img.gift-popup-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.gift-popup-content p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 20px; /* больше основной текст */
+}
+
+.gift-popup-content small {
+  display: block;
+  margin-top: 6px;
+  color: #cfc3a0;
+  font-size: 14px;
+}
+
+/* Золотая полоса с интегрированной стрелкой */
+.gift-popup-arrow {
+  position: relative;
+  background: linear-gradient(to right, #f4d88c, #d2aa5c);
+  height: 14px;
+}
+
+.gift-popup-arrow::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #d2aa5c; /* цвет стрелки */
+  filter: drop-shadow(0 0 4px rgba(244, 216, 140, 0.6)); /* свечение */
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById('giftPopup');
+
+  const checkInterval = setInterval(() => {
+    const giftButton = document.querySelector('.gift-center-button');
+    if (!giftButton || !popup) return;
+
+    clearInterval(checkInterval);
+
+    giftButton.addEventListener('mouseenter', () => {
+      popup.style.display = 'block';
+      popup.style.opacity = '0'; // начальная прозрачность
+
+      requestAnimationFrame(() => {
+        const rect = giftButton.getBoundingClientRect();
+        popup.style.left = rect.left + rect.width / 2 - popup.offsetWidth / 2 + 'px';
+        popup.style.top = rect.top - popup.offsetHeight - 22 + window.scrollY + 'px';
+        popup.style.opacity = '1';
+      });
+    });
+
+    giftButton.addEventListener('mouseleave', () => {
+      popup.style.opacity = '0';
+      setTimeout(() => { popup.style.display = 'none'; }, 300);
+    });
+  }, 300);
+});
+</script>
+
+    <link rel="stylesheet" href="css/cstyle.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/rpg-awesome.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/addition_ver%3D1.124.css">
+
+<style>
+    ::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(17, 48, 85, 0.47);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: rgba(250, 250, 250, 0.38);
+    }
+
+</style></head>
+
+<body class="body" style="overflow-x: hidden">
+    <div class="fixed-banner" style="position: fixed; top: 103px; right: 0; z-index: 99999;">
+  
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Проверка наличия кнопки каждые 300мс, максимум 5 сек
+  const tryAttach = setInterval(() => {
+    const giftBlock = document.querySelector('.header__features-item-content');
+
+    if (giftBlock) {
+      giftBlock.style.cursor = 'pointer';
+      giftBlock.onclick = () => {
+        window.open('https://dkon.app/La2WildMP', '_blank');
+      };
+      clearInterval(tryAttach); // Остановить попытки
+    }
+  }, 300);
+
+  setTimeout(() => clearInterval(tryAttach), 5000); // Через 5 сек перестать пытаться
+});
+</script>
+
+<!-- Всплывающее окно -->
+<div class="gift-popup" id="giftPopup">
+  <div class="gift-popup-content">
+    <img src="images/2.png" alt="Gift" class="gift-popup-img">
+    <p>
+      Free gift for subscribing to the community on DKon!<br>
+      <small>Click the button to receive your promo code..</small>
+    </p>
+  </div>
+  <div class="gift-popup-arrow"></div>
+</div>
+
+<div class="wrapper ">
+    <nav class="nav flex-cc">
+        <a href="#" class="nav__logo">
+            <img style="width: 70px;" src="images/rtgsrtdyrtgnstgbsrrbb.png" alt="">
+        </a>
+        <div class="nav__content flex-sbc">
+            <ul class="nav__menu flex-cc">
+                
+                
+                
+                
+                <li>
+                                                                                        <a href="#" class="drop-button">  About the Server</a>
+                                <ul class="nav__group drop-box">
+                                    
+                                    
+                                        
+                                    
+                                                                            <li>
+                                            <a href="https://dkon.app/Interlude/post/420569?referrer=7609" target="_blank">
+                                                 Interlude
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://dkon.app/La2WildMP/post/419649?referrer=7609" target="_blank">
+                                                Gracia Final
+                                            </a>
+                                        </li>
+                                                                        
+                                                                    </ul>
+                                                    </li>
+                
+                
+                
+                                                           
+                                            <li>
+                                                            <a href="#sg">
+                                    Files
+                                </a>
+                                                                                </li>
+                                            <li>
+                                                                                        <a href="#" class="drop-button"> Community</a>
+                                <ul class="nav__group drop-box">
+                                    
+                                    
+                                        <li>
+                                            <a href="https://dkon.app/La2WildMP?referrer=7609" target="_blank">
+                                                Help with the game
+                                            </a>
+                                        </li>
+                                    
+                                                                            <li>
+                                            <a href="https://dkon.app/Interlude?referrer=7609" target="_blank">
+                                                News Interlude
+                                            </a>
+                                        </li>
+                                                                            <li>
+                                            <a href="https://dkon.app/L2GFx1?referrer=7609" target="_blank">
+                                                News Gracia Final
+                                            </a>
+                                        </li>
+                                                                        
+                                                                    </ul>
+                                                    </li>
+                                           
+                                           
+                                                </ul>
+
+            
+            <a target="" href="#l2start" class="nav__support button">
+                <i class="fa-solid fa-headset"></i>
+                <span>Create Account</span>
+            </a>
+        </div>
+       
+        <div class="nav__open-menu">
+            <div class="nav__open-menu-item"></div>
+        </div>
+    </nav>
+        <header class="header">
+        <div class="header__content">
+            <a style="width: 500px;height: 138" href="#" class="header__logo">
+                <img style="width: 100%;height: 100%" src="images/imgloogoogoo.png" alt="header-logo">
+            </a>
+                                                <h1>13.09.2025</h1>
+                    <img style="margin: 5px auto;" src="images/header_line.png" alt="" class="header__separator">
+                    <p></p><p><span style="font-family: 'book antiqua', palatino, serif; font-size: 24pt;">New server Interlude</span><br>
+<span id="total" style="font-family: 'book antiqua', palatino, serif; font-size: 24pt;"></span></p><p></p>
+                                        <div class="header__features flex-cc">
+                            </div>
+            <a href="#sg" class="header__button flex-cc">Start Game</a>
+        </div>
+        <video autoplay="" loop="" muted="" class="header__video">
+            <source src="media/video_bg.mp4" type="video/mp4">
+        </video>
+    </header>
+    <section id="l2start" class="main-content">
+        <div class="content-area flex-cc">
+           
+            <div class="news has-border">
+                                    <h3 style="display: flex;width: 100%;justify-content: center;height: 100%;align-items: center;">
+                        <span><center>About the Project</center>
+						
+						
+						
+						 <script async src="https://res.dkon.app/dev/widget.js" data-dkon-color="marine" data-dkon-post="la2playert/426535" data-width="400px" data-height="770px"></script>
+						
+						
+						</span>
+<br>
+                    </h3>
+              
+
+   
+
+                            </div>
+            
+        </div>
+    </section>
+        <div class="start-game__content">
+    <div class="content-area flex-sbs">
+        <div class="start-game__content-step">
+            <h3>
+                <span>Lineage 2 Gracia Final</span>
+            </h3>
+            <span id="gf">Online: 225</span>
+            <p>To play on our Gracia Final servers, you need to download our client or the server patch.</p>
+            <div class="start-game__content-step-links flex-ss">
+                <a href="/file/gracia-client" target="_blank" class="button button--gold flex-cc">
+                    <span>Download Gracia Final Client</span>
+                </a>
+                <br>
+                <a href="/file/gracia-patch" target="_blank" class="button button--gold flex-cc">
+                    <span>Download Patch Gracia Final</span>
+                </a>
+
+				 <br>
+                <a href="/launches/GraciaFinal.exe" target="_blank" class="button button--gold flex-cc">
+                    <span>Download Launcher Gracia Final</span>
+                </a>
+            </div>
+        </div>
+        <div class="start-game__content-step">
+            <h3>
+                <span>Lineage 2 Interlude</span>
+            </h3>
+            <span id="int">Online: 343</span>
+            <p>To play on our Interlude servers, you need to download our client or the server patch.</p>
+            <div class="start-game__content-step-links flex-ss">
+                <a href="/file/interlude-client" target="_blank" class="button button--gold flex-cc">
+                    <span>Download Interlude Client</span>
+                </a>
+                <br>
+                <a href="/file/interlud-patch" target="_blank" class="button button--gold flex-cc">
+                    <span>Download Patch Interlude</span>
+                </a>
+				 <br>
+                <a href="/launches/Interlude.exe" target="_blank" class="button button--gold flex-cc">
+                    <span>Download Launcher Interlude</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function fetchOnlinePlayers() {
+        try {
+            const response = await fetch('https://api-online.theanion.online/');
+            const data = await response.json();
+            document.getElementById('gf').innerText = `Online: ${data.gracia}`;
+            document.getElementById('int').innerText = `Online: ${data.interlude}`;
+            document.getElementById('total').innerText = `Total Online: ${data.total}`;
+        } catch (error) {
+            console.error('Error fetching online players:', error);
+        }
+    }
+
+    // Обновляем данные каждые 30 секунд
+    fetchOnlinePlayers();
+    setInterval(fetchOnlinePlayers, 30000);
+</script>
+
+    
+</div>
+<footer class="footer page-footer">
+    <div class="content-area">
+        <div class="footer__line flex-sc">
+           
+
+            
+            
+        </div>
+        <div class="footer__separator"></div>
+        <div class="footer__line flex-cc">
+            <div class="footer__copyright">
+                <span>2025 Lineage2</span>
+				<p></p>
+                <p>This is only a test server for L2. All rights reserved by Ncsoft. </p>
+            </div>
+            <div class="scroll-top">
+                <img src="images/arrow_top.png" alt="">
+            </div>
+            <div style="display: flex;align-items: center;gap:5px;flex-wrap: wrap"> 
+
+
+<a href='https://l2votes.com/votes.php?sid=837' target='_blank' title='l2votes.com'>
+<img alt='image' title='image' alt='https://l2votes.com/votes.php?sid=837' src='https://l2votes.com/images/logos/l2votes-1.jpg'/>
+</a>
+				
+<a href="http://La2Top.Ru/" target="_blank"><img src="http://La2Top.Ru/resource/img/logo1.png"  border="0" alt="La2Top.Ru: Рейтинг-каталог серверов Lineage2"></a>
+				
+
+				<a href="https://l2-servera.com" target="_blank" data-wpel-link="internal"><img src="https://l2-servera.com/wp-content/themes/servers/assets/images/button/black.gif" title="Анонсы серверов Lineage 2." width="190" height="60" border="0"></a>
+
+				<a href="https://l2argument.ru" target="_blank" title="База знаний и рейтинг серверов Lineage 2" ><img src="https://l2argument.ru/assets/images/l2argument3.jpg" /></a>
+
+<a href="https://l2elo.com/" target="_blank" style="z-index:99999"><img title="Анонсы новых серверов Lineage 2 на L2ELO" src="https://l2elo.com/images/l2elo-promo.png" width=150 height=53 border="0"></a>
+
+
+				
+<a href="https://l2-top.ru" target="_blank"><img src="https://l2-top.ru/img/button1.gif" alt="Анонсы серверов Lineage 2" title="Новые сервера л2" width="88" height="31" border="0"></a>
+				
+				<a href="https://l2hop.com/" style="width:189px;height:59px;" target="_blank" title="Новые Lineage 2 сервера"><img src="https://l2hop.com/assets/l2hop.jpg" alt="Новые сервера Lineage 2" border="0" /></a>
+				
+                                                                                                <a href="https://l2topzone.com/" target="_blank">
+                                <img src="images/gQwVkgEMtfFuZWaDmhwwtaHpdBuEbekTEhUkjomz.png" alt="l2topzone" title="l2topzone" width="88" height="31">
+                            </a>
+                                                                        </div>
+        </div>
+    </div>
+</footer>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/swiper.js"></script>
+<script src="js/lang-switch.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/timer.js"></script>
+<script src="js/MVisionToggleClass.js"></script>
+<script src="js/spoiler.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/global.js"></script>
+<script src="js/bootstrap-history-tabs.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/bootstrap-notify.min.js"></script>
+
+
+</body></html>

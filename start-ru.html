@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Anion - Lineage 2 Interlude & Gracia Final</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffd700;
+            --accent: #c9a227;
+            --dark: #0a0a0f;
+            --glass: rgba(10, 10, 15, 0.85);
+            --text: #e0e0e0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #0f0f1a;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: linear-gradient(to bottom, #1a1a2e, transparent);
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5em;
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+        .subtitle {
+            font-size: 1.8em;
+            margin: 25px 0;
+            font-weight: 300;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: #000;
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 40px;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.5);
+        }
+        nav {
+            background: rgba(10, 10, 15, 0.9);
+            padding: 18px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--accent);
+        }
+        nav a {
+            color: #fff;
+            margin: 0 25px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 50px;
+            background: var(--glass);
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .online {
+            text-align: center;
+            font-size: 2.2em;
+            margin: 50px 0;
+        }
+        .online span {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .servers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .server-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--accent);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .server-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+        }
+        .server-card h3 {
+            color: var(--primary);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .downloads {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+        }
+        .download-box {
+            background: rgba(20, 20, 30, 0.6);
+            padding: 40px;
+            border-radius: 18px;
+            border: 1px solid var(--accent);
+        }
+        .download-box h3 {
+            color: var(--primary);
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .download-box a {
+            display: block;
+            background: var(--primary);
+            color: #000;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .download-box a:hover {
+            background: #fff;
+            transform: scale(1.03);
+        }
+        .features p {
+            font-size: 1.5em;
+            line-height: 1.9;
+            text-align: center;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(10, 10, 15, 0.95);
+            margin-top: 80px;
+            border-top: 1px solid var(--accent);
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 3.2em; }
+            .subtitle { font-size: 1.4em; }
+            section { padding: 30px; margin: 40px 20px; }
+            .downloads { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Anion</h1>
+        <p class="subtitle">Lineage 2 Interlude & Gracia Final — Честная классика без доната</p>
+        <div class="online">
+            <p>Общий онлайн: <span id="total-online">Загрузка...</span> игроков прямо сейчас!</p>
+        </div>
+        <a href="#downloads" class="cta-button">Присоединиться сейчас</a>
+    </header>
+
+    <nav>
+        <a href="#servers">Серверы</a>
+        <a href="#downloads">Скачать</a>
+        <a href="#features">Почему мы?</a>
+        <a href="#comparison">Выбор хроник</a>
+    </nav>
+
+    <section id="servers">
+        <h2>Наши серверы — выбирай свой стиль игры</h2>
+        <div class="servers">
+            <div class="server-card">
+                <h3>Gracia Final x1</h3>
+                <p>Полный классический опыт Gracia Final</p>
+            </div>
+            <div class="server-card">
+                <h3>Interlude x1</h3>
+                <p>Чистый оригинальный Interlude</p>
+            </div>
+            <div class="server-card">
+                <h3>Interlude x3</h3>
+                <p>Комфортный рейт для стабильного прогресса</p>
+            </div>
+            <div class="server-card">
+                <h3>Interlude x20</h3>
+                <p>Быстрое развитие и динамичные события</p>
+            </div>
+            <div class="server-card">
+                <h3>Interlude PvP x1200</h3>
+                <p>Бесконечный экшн для любителей PvP</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="downloads">
+        <h2>Начни играть за считанные минуты</h2>
+        <p style="text-align:center; font-size:1.5em; margin-bottom:40px;">Авторегистрация аккаунта — просто запусти клиент!</p>
+        <div class="downloads">
+            <div class="download-box">
+                <h3>Gracia Final</h3>
+                <a href="https://drive.google.com/file/d/18lFLaPRu8jM2sSpkMxCgyGH0nD1W4wxT/view?usp=sharing" target="_blank">Клиент GF</a>
+                <a href="https://bigstorage.dkon.app/?GraciaFinal_Installer_en" target="_blank">Лаунчер GF (рекомендуем!)</a>
+                <a href="https://bigstorage.dkon.app/?GraciaPatch" target="_blank">Патч для GF</a>
+            </div>
+            <div class="download-box">
+                <h3>Interlude</h3>
+                <a href="https://drive.google.com/file/d/1exnggidr_0e-jyfDrGuTWGiEDKF_foE9/view" target="_blank">Клиент Interlude</a>
+                <a href="https://bigstorage.dkon.app/?Interlude_Installer_en" target="_blank">Лаунчер Interlude (рекомендуем!)</a>
+                <a href="https://bigstorage.dkon.app/?InterludePatch" target="_blank">Патч для Interlude</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Почему тысячи игроков переходят именно к нам?</h2>
+        <p>Устали от серверов, где всё решают деньги? Переходите на <span class="highlight">The Anion</span> — <span class="highlight">полностью без доната</span>! Здесь побеждает только скилл, тактика и командная работа.</p>
+        <p>Мы реализовали <span class="highlight">все функции оригинальной игры</span>: лотерея, ставки на монстров, эпические рейд-боссы, осады замков, олимпиада, рыбалка и многое другое — ничего не вырезано!</p>
+        <p><span class="highlight">Интернациональный проект</span>: игроки из Европы, Азии, Америки и СНГ. Глобальный чат на английском и русском — находите друзей по всему миру!</p>
+        <p>В отличие от других проектов, у нас нет автофарма, друзей-админов, игровых багов в квестах и механиках, дисбаланса классов (как жалобы на даггеров), проблем с осадами, нечестных банов, лагов или игнорирования предложений игроков. Мы обеспечиваем стабильную, честную игру с оперативной поддержкой — никаких раздражающих моментов!</p>
+        <p class="highlight" style="font-size:2em; margin-top:60px;">Переходи с других серверов прямо сейчас — здесь честная игра, высокий онлайн и настоящая атмосфера Lineage 2!</p>
+        <div style="text-align:center; margin-top:50px;">
+            <a href="#downloads" class="cta-button">Скачать клиент и играть!</a>
+        </div>
+    </section>
+    
+    
+    <script async src="https://res.dkon.app/dev/widget.js" data-dkon-post="intx3/426538" data-width="100%" data-height="700px" data-dkon-color="sepia"></script>
+    
+    <section id="adventure">
+    <h2>Lineage 2 — это не только прокачка, это целый мир приключений</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Забудьте о бесконечном гринде в одних и тех же локациях. На <span class="highlight">The Anion</span> вы по-настоящему <span class="highlight">погружаетесь в эпический мир Aden</span>.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Садитесь на <span class="highlight">огромный  корабль</span>, который величественно плывёт между континентами, наблюдая за облаками и далёкими землями. Чувствуйте солёный ветер в волосах, стоя на палубе <span class="highlight">морского корабля</span>, курсирующего между Talking Island и Gludio, или отправляйтесь в далёкое путешествие из Giran в Heine под закатным небом.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Исследуйте скрытые уголки мира: затерянные острова, древние руины, таинственные подземелья и величественные замки. Участвуйте в грандиозных осадах, ловите рыбу в тихих бухтах, наслаждайтесь красотой смены дня и ночи, слушайте саундтрек, который уже стал легендой.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Здесь вы не просто качаете уровни — вы <span class="highlight">живёте в сказке</span>, где каждое путешествие становится незабываемым приключением.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Отправиться в путешествие</a>
+    </div>
+</section>
+<script async src="https://res.dkon.app/dev/widget.js" data-dkon-post="Mijiliangi/420062" data-width="100%" data-height="1200px" data-dkon-color="marine"></script>
+    
+    <section id="economy">
+    <h2>Экономика, которая живёт и дышит</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        На <span class="highlight">The Anion</span> торговля — это не просто способ заработать адену, это настоящее искусство, сердце классического Lineage 2.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Отправляйтесь в легендарный <span class="highlight">Giran Harbor</span> или уютный <span class="highlight">Dion</span>, ставьте приватный магазин и наблюдайте, как игроки со всего мира ищут именно ваши ресурсы: Animal Bone, Stem, Iron Ore, Mithril, Enria. Каждый материал — это возможность для крафтера создать что-то великое: от простых рецептов до эпических шедевров.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        На серверах <span class="highlight">x1</span> экономика особенно жива и ценна. Здесь даже <span class="highlight">No Grade</span> вещи и D-Grade сеты имеют огромный спрос — новички готовы платить хорошие деньги за качественный старт. Топовые крафтеры становятся настоящими магнатами, а редкие рецепты и материалы превращаются в настоящее золото.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Нет смысла слепо торопиться к максимальному уровню. На <span class="highlight">каждом этапе</span> игры вас ждёт свой блеск: в Cruma Tower нужны одни ресурсы, в Enchanted Valley — другие, в Dragon Valley — третьи. Каждый уровень открывает новые возможности для фарма, крафта и торговли. Здесь вы наслаждаетесь процессом, а не гонитесь за цифрами.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Станьте частью живой экономики, где ваш труд, смекалка и терпение вознаграждаются по-настоящему. Здесь каждый может найти свою нишу — будь то собиратель ресурсов, мастер-крафтер или хитрый торговец.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Вступить в мир настоящей экономики</a>
+    </div>
+</section>
+    
+    
+    <script async src="https://res.dkon.app/dev/widget.js" data-dkon-post="interlude/297905" data-width="100%" data-height="700px" data-dkon-color="sepia"></script>
+    
+
+    <section id="unique-items">
+    <h2>Тайны мира: уникальные предметы, которых больше ни у кого не будет</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        На <span class="highlight">The Anion</span> мы пошли дальше обычной классики и добавили то, о чём мечтали многие — настоящие <span class="highlight">уникальные предметы</span>, которых никогда не было в официальной версии игры.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Администрация тщательно изучила архивы разработчиков и нашла <span class="highlight">unic items</span> — потрясающие вещи, созданные ещё на стадии разработки Interlude и Gracia Final, но по разным причинам не попавшие в релиз. Мы решили вдохнуть в них жизнь и спрятали по всему миру Aden.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        В далёких уголках карты, в забытых подземельях и на вершинах неприступных гор вы встретите <span class="highlight">уникальных NPC</span>. Эти таинственные торговцы предложат вам за символическую цену в адене предмет, которого <span class="highlight">больше никогда не будет на сервере</span>. Как только вы его купите — он исчезнет из продажи навсегда и останется только у вас.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Эти предметы <span class="highlight">не дают никаких игровых преимуществ</span> — ни статов, ни бонусов. Их ценность исключительно в редкости и красоте: второй такой вещи не будет ни у кого. Это ваш личный трофей, доказательство того, что вы настоящий исследователь мира Lineage 2.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Пусть это станет для вас дополнительным стимулом открывать новые локации, изучать каждый уголок карты и наслаждаться настоящим приключением. Ведь в Aden ещё так много тайн ждёт своего первооткрывателя.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Найти свой уникальный предмет</a>
+    </div>
+</section>
+    
+    <script async src="https://res.dkon.app/dev/widget.js" data-dkon-post="La2WildMP/420318" data-width="100%" data-height="500px" data-dkon-color="sepia"></script>
+    
+    
+    
+    <section id="always-alive">
+    <h2>Сервер живёт 24/7 — в любое время суток</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        На <span class="highlight">The Anion</span> вы никогда не почувствуете одиночества, независимо от того, в каком часовом поясе вы играете и который сейчас час за окном.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Утром, днём, вечером и даже <span class="highlight">глубокой ночью</span> на сервере постоянно появляются новые лица. Игроки из Европы, Азии, Америки и СНГ заходят в разное время — и всегда находят с кем поиграть, поторговать или отправиться в совместный поход.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Мы активно рекламируем проект по всему миру, поэтому поток новичков не иссякает ни на день. Вы увидите, как в чате постоянно мелькают приветствия новоприбывших, как стартовые локации заполняются свежими героями, готовыми покорять Aden.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Здесь <span class="highlight">только живые игроки</span> — никаких ботов, никакого автофарма и пустых магазинов с ботами. Каждый персонаж, которого вы встречаете, — это реальный человек с собственной историей, планами и эмоциями.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Заходите в любое время — сервер всегда полон жизни, приключений и новых знакомств. The Anion никогда не спит.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Зайти в живой мир прямо сейчас</a>
+    </div>
+</section>
+    
+    <script async src="https://res.dkon.app/dev/widget.js" data-dkon-post="La2WildMP/420734" data-width="100%" data-height="700px" data-dkon-color="sepia"></script>
+    
+    
+    
+    
+    <section id="enhancements">
+    <h2>Наши дополнения — только красота и атмосфера</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Мы постоянно вводим <span class="highlight">обновления и дополнения</span>, которые делают игру ещё красивее и приятнее. Именно поэтому <span class="highlight">настоятельно рекомендуем использовать наши лаунчеры</span> — они автоматически устанавливают все патчи и нововведения.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        В наших дополнениях вы найдёте <span class="highlight">улучшенную графику</span> классических клиентов: более чёткие текстуры, мягкие тени, красивые эффекты закатов и рассветов — всё то, что делает старый добрый Interlude и Gracia Final по-настоящему живым и современным на вид.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Мы добавили <span class="highlight">роскошные старинные костюмы</span> и разнообразную одежду: элегантные плащи, изысканные доспехи, праздничные наряды и повседневные комплекты. Всё это выглядит потрясающе, подчёркивает индивидуальность вашего персонажа и создаёт неповторимую атмосферу.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Важно: <span class="highlight">вся эта красота абсолютно бесплатна</span>. Никакого доната за костюмы, никакие платные скины — всё доступно каждому игроку просто за игру. Доната на сервере нет и никогда не будет.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Мы создаём ту самую <span class="highlight">уникальную атмосферу</span> настоящего Lineage 2, которую никто больше не сможет повторить. Потому что другие проекты давно превратились в донат-помойки, где жадные администрации выкачивают деньги из игроков. А мы делаем сервер для вас — чистый, честный и красивый.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Скачать лаунчер и увидеть красоту</a>
+    </div>
+</section>
+    
+    
+     <script async src="https://res.dkon.app/dev/widget.js" data-dkon-post="La2WildMP/427670" data-width="100%" data-height="800px" data-dkon-color="sepia"></script>
+    
+    
+    
+    
+    <section id="support">
+    <h2>Как помочь серверу? Самый ценный вклад — это вы сами</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Лучшая поддержка, которую вы можете оказать <span class="highlight">The Anion</span>, — это просто играть у нас, наслаждаться миром Aden и становиться частью нашего большого сообщества.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Приглашайте друзей, зовите старых клановых товарищей, рассказывайте о проекте на форумах и в чатах. Каждый новый игрок — это новые приключения, новые осады, новые истории, которые мы пишем вместе.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Мы <span class="highlight">не принимаем донаты</span>, не вводим реферальные системы и премиум-аккаунты. Никаких скрытых платежей и «поддержки проекта» за деньги. Мы верим, что Lineage 2 — это место, где побеждает только ум, хитрость, терпение и мастерство игрока, а не толщина кошелька.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Здесь нет места платным преимуществам. Мы создаём честный мир, где каждый герой равен перед лицом судьбы, и только ваши руки, голова и сердце решают, кем вы станете в этой эпической саге.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Играйте, творите легенды, приводите друзей — и вместе мы сделаем The Anion самым живым и справедливым уголком классического Lineage 2.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Пригласить друзей и начать играть</a>
+    </div>
+</section>
+    
+    
+    
+    <section id="technical">
+    <h2>Техническая надёжность — игра без лагов из любой точки мира</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        <span class="highlight">The Anion</span> работает на современном мощном оборудовании и размещён на премиум-хостингах высшего уровня. Мы не экономим на железе — только стабильность, скорость и надёжность.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Мы разработали и внедрили <span class="highlight">собственную систему проксирования и оптимизации трафика</span>, благодаря которой пинг остаётся минимальным независимо от того, где вы находитесь — в Европе, Азии, Америке, Австралии или любой другой точке планеты.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Сервер полностью открыт и доступен <span class="highlight">из любой страны мира</span> без ограничений и блокировок. Где бы вы ни были — дома, в поездке или за тысячи километров от дата-центра — игра будет плавной, отзывчивой и комфортной.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Для максимального удобства и автоматической установки всех наших улучшений <span class="highlight">рекомендуем использовать лаунчер</span> — он не только быстро загрузит клиент, но и обеспечит лучшую совместимость и стабильность соединения.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Играйте без задержек, без разрывов и без границ. The Anion — это мир, который всегда рядом, где бы вы ни были.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Скачать лаунчер и подключиться без лагов</a>
+    </div>
+</section>
+    
+    
+    <section id="comparison">
+    <h2>Interlude или Gracia Final? Поможем выбрать хроники</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        На <span class="highlight">The Anion</span> вы можете выбрать любые хроники — у нас есть и легендарный <span class="highlight">Interlude</span>, и более продвинутый <span class="highlight">Gracia Final</span>. Чтобы вам было проще решить, вот честное и подробное сравнение.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin: 60px auto; max-width: 1100px;">
+        <div style="background: rgba(20, 20, 30, 0.6); padding: 40px; border-radius: 18px; border: 1px solid var(--accent);">
+            <h3 style="color: var(--primary); font-size: 2.2em; text-align: center; margin-bottom: 30px;">Interlude</h3>
+            <p style="font-size: 1.4em; line-height: 1.8;">
+                • Классика в чистом виде — именно в этих хрониках Lineage 2 стала легендой<br>
+                • Простой и понятный баланс классов, знакомый миллионам ветеранов<br>
+                • Классические осады замков, эпические рейд-боссы (Antharas, Valakas, Baium)<br>
+                • Нет сложных систем территориальных войн и воздушных замков<br>
+                • Идеально для тех, кто хочет ностальгии и «того самого» L2<br>
+                • Быстрее прокачка навыков, меньше гринда на скиллы<br>
+                • PvP и PvE ощущаются более «сырыми» и динамичными
+            </p>
+            <p style="font-size: 1.6em; text-align: center; margin-top: 40px; color: var(--primary); font-weight: bold;">
+                Выбирайте Interlude, если любите чистую классику и ностальгию
+            </p>
+        </div>
+        
+        <div style="background: rgba(20, 20, 30, 0.6); padding: 40px; border-radius: 18px; border: 1px solid var(--accent);">
+            <h3 style="color: var(--primary); font-size: 2.2em; text-align: center; margin-bottom: 30px;">Gracia Final</h3>
+            <p style="font-size: 1.4em; line-height: 1.8;">
+                • Более современная версия с улучшенной графикой и эффектами<br>
+                • Новые локации: Hellbound, Seed of Destruction, Seed of Infinity<br>
+                • Воздушные замки и территориальные войны — масштабные сражения<br>
+                • Новые эпические боссы (Frintezza, Freya, Beleth)<br>
+                • Расширенная система витальности и бонусы за онлайн<br>
+                • Больше контента для высокоуровневых персонажей<br>
+                • Улучшенный интерфейс и качество жизни (QoL)
+            </p>
+            <p style="font-size: 1.6em; text-align: center; margin-top: 40px; color: var(--primary); font-weight: bold;">
+                Выбирайте Gracia Final, если хотите больше контента и эпичности
+            </p>
+        </div>
+    </div>
+    
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 70px auto 50px; font-weight: 500;">
+        Не важно, какие хроники вы выберете — на наших серверах вас ждёт честная игра без доната, стабильный онлайн и полное погружение в мир Lineage 2.
+    </p>
+    
+    <div style="text-align:center;">
+        <a href="#downloads" class="cta-button">Выбрать хроники и начать играть</a>
+    </div>
+</section>
+    
+    
+    
+    <section id="x1-servers">
+    <h2>Серверы x1 — настоящая классика Lineage 2</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Если вы ищете <span class="highlight">подлинный опыт старой школы</span>, где каждый шаг имеет значение — добро пожаловать на наши серверы <span class="highlight">x1</span> (Interlude x1 и Gracia Final x1). Здесь всё так, как задумывали разработчики в лучшие годы игры.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Нет GM-шопов, нет NPC-баферов, нет бесплатных раздач экипировки и расходников. Всё добывается честным трудом: фарм, крафт, торговля и совместные походы.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Именно поэтому на x1-серверах <span class="highlight">разрешена игра в несколько окон</span>. Баферы, пророки, варкриеры и танки — настоящие профессии. Классы поддержки невероятно востребованы: хороший бафер всегда найдёт себе постоянную партию или клан и будет в центре событий.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Телепорты <span class="highlight">платные</span>, как и в оригинальной игре. Это заставляет игроков по-настоящему <span class="highlight">изучать карту мира</span>: бегать пешком, ездить на страйдерах, плавать на кораблях и открывать короткие пути через горы и леса.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Многие ветераны признаются: именно на x1 они впервые по-настоящему узнали Aden — нашли скрытые споты, секретные проходы, уютные места для фарма и красивые уголки, о которых раньше даже не подозревали.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        x1 — это не просто сервер с низкими рейтами. Это возвращение к корням, где ценится каждый уровень, каждая адена и каждый новый открытый уголок огромного мира.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Погрузиться в настоящую классику x1</a>
+    </div>
+</section>
+    
+    
+    
+     <script async src="https://res.dkon.app/dev/widget.js" data-dkon-post="La2WildMP/420729" data-width="100%" data-height="500px" data-dkon-color="sepia"></script>
+    
+    
+    <section id="forever">
+    <h2>Вечный мир без вайпов и доната</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        На <span class="highlight">The Anion</span> ваши персонажи будут жить вечно. Здесь <span class="highlight">никогда не будет вайпов</span>, никогда не появится донат и платные преимущества. Ваш прогресс, ваши вещи, ваши друзья и воспоминания — всё это останется с вами навсегда.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        За годы существования приватных серверов сотни проектов, открывавшихся рядом с нами, уже десятки раз переоткрывались под новыми названиями, меняли механики ради быстрого заработка и в итоге закрывались навсегда, оставляя игроков ни с чем.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Для нас Lineage 2 — это не бизнес и не способ заработка. Это <span class="highlight">душа</span>, это те самые эмоции, которые нельзя купить ни за какие деньги. Мы вкладываем своё время, силы и ресурсы только ради того, чтобы вы снова почувствовали магию Aden — настоящую, чистую и неподвластную времени.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Лучшая награда для нас — высокий онлайн, ваши улыбки в чате, рассказы о грандиозных осадах и тысячи игроков, которые каждый день возвращаются в наш мир. Мы не гонимся за быстрыми деньгами — мы хотим возродить те самые моменты и эмоции, которые не способен дать ни один донат-сервер.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 50px auto; font-weight: 500;">
+        Дайте шанс нашему проекту. Пригласите друзей, старых клановых товарищей и тех, кто устал от бесконечных вайпов и платных шопов. Войдите в игру вместе с нами — и давайте напишем новую главу в истории классического Lineage 2, где правит только честность, мастерство и настоящая страсть к игре.
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Войти в вечный мир The Anion</a>
+    </div>
+</section>
+    
+    <section id="launcher-importance">
+    <h2>Всегда держите лаунчер под рукой</h2>
+    <p style="font-size: 1.6em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        В мире приватных серверов иногда случаются блокировки IP со стороны провайдеров. Но на <span class="highlight">The Anion</span> мы подумали и об этом.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        <span class="highlight">Лаунчер — ваш надёжный ключ</span> к серверу. Даже если основной IP окажется заблокированным вашим интернет-провайдером, лаунчер автоматически подключит вас через альтернативные пути и прокси. Вы всегда сможете вернуться в Aden без лишних сложностей.
+    </p>
+    <p style="font-size: 1.5em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 40px auto;">
+        Установите лаунчер один раз — и играйте спокойно, зная, что дорога домой в наш мир всегда открыта.
+    </p>
+    <p style="font-size: 1.7em; line-height: 1.9; text-align: center; max-width: 1000px; margin: 60px auto; font-weight: 500;">
+        Спасибо за внимание!<br>
+        Ждём вас в игре. Увидимся в Aden!
+    </p>
+    <div style="text-align:center; margin-top:60px;">
+        <a href="#downloads" class="cta-button">Скачать лаунчер и шагнуть в мир</a>
+    </div>
+</section>
+    
+    <footer>
+    
+        <p>&copy; 2025 The Anion Lineage 2 — Международный проект без доната</p>
+    </footer>
+
+    <script>
+        fetch('https://api-online.theanion.online')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total-online').textContent = data.total.toLocaleString();
+            })
+            .catch(() => {
+                document.getElementById('total-online').textContent = 'тысячи';
+            });
+    </script>
+</body>
+</html>

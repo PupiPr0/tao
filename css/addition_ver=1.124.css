@@ -1,0 +1,13 @@
+.active {
+    color: #ffdb8f !important;
+}
+.header__content {
+    max-width: 900px;
+}
+.text-area__grid-item h4 {
+    margin-top: 22px !important;
+    text-align: center;
+}
+.inner-page {
+    margin-top: 100px;
+}
